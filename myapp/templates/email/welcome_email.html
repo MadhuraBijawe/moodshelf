@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f7fa;
+      padding: 40px;
+      color: #333;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    }
+    h2 {
+      color: #6c63ff;
+    }
+    .footer {
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Welcome, {{ username }} 👋</h2>
+    <p>
+      We're excited to have you on <strong>MoodShelf</strong>!
+    </p>
+    <p>
+      Based on your mood <strong>"{{ mood }}"</strong>, we’ll suggest books that truly match your vibe.
+    </p>
+    <p>
+      Let’s explore your bookshelf based on feelings! 📚✨
+    </p>
+    <p class="footer">
+      — Team MoodShelf ❤️
+    </p>
+  </div>
+</body>
+</html>

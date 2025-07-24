@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="favorites-container">
+    <h2 class="favorites-heading">📚 Your Favorite Books</h2>
+
+    {% if favorites %}
+    <div class="favorites-grid">
+        {% for fav in favorites %}
+        <div class="fav-card">
+            <img src="{{ fav.book.image_url }}" alt="{{ fav.book.title }}" class="fav-img" onerror="this.src='{% static 'img/book_placeholder.jpg' %}'">
+            <div class="fav-details">
+                <h5>{{ fav.book.title }}</h5>
+                <p><strong>Author:</strong> {{ fav.book.author }}</p>
+                <p><strong>Genre:</strong> {{ fav.book.genre }}</p>
+                <p>{{ fav.book.description|truncatewords:20 }}</p>
+            </div>
+            <form method="post" action="{% url 'remove_favorite' fav.book.id %}">
+                {% csrf_token %}
+                <button class="remove-btn">Remove ❌</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-favorites">
+        <p>No favorite books yet!</p>
+        <img src="{% static 'img/empty_favorites.svg' %}" alt="No favorites">
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

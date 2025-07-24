@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}Profile | MoodShelf{% endblock %}
+
+{% block content %}
+<div class="emoji-bubble-container">
+  <!-- Floating emojis (reuse or include via base) -->
+  <span class="emoji-bubble">😊</span>
+  <span class="emoji-bubble">📚</span>
+  <span class="emoji-bubble">🤓</span>
+  <span class="emoji-bubble">❤️</span>
+  <span class="emoji-bubble">💡</span>
+</div>
+
+<div class="container pt-5 mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="glassmorphism-card p-4 text-center shadow-lg">
+      <h2 class="mb-3">👤 Your Profile</h2>
+      <p><strong>Name:</strong> {{ user.username }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p><strong>Member Since:</strong> {{ user.date_joined|date:"F j, Y" }}</p>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-4">
+    <div class="glassmorphism-card p-4 shadow-lg">
+      <h4 class="text-center mb-3">🧠 Mood History</h4>
+      {% if mood_history %}
+        <ul class="list-group list-group-flush text-white">
+          {% for mood in mood_history %}
+            <li class="list-group-item bg-transparent border-white text-white">
+              {{ mood.name }} — {{ mood.timestamp|date:"M d, Y H:i" }}
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="text-center">No mood history found.</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-4">
+    <div class="glassmorphism-card p-4 shadow-lg">
+      <h4 class="text-center mb-3">⚙️ Settings</h4>
+      <div class="form-check form-switch text-start">
+        <input class="form-check-input" type="checkbox" id="soundToggle">
+        <label class="form-check-label" for="soundToggle">Sound Notifications</label>
+      </div>
+      <!-- Future: Add theme toggle or password reset -->
+    </div>
+  </div>
+</div>
+{% endblock %}

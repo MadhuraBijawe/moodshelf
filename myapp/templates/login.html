@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}Login | MoodShelf{% endblock %}
+
+{% block content %}
+
+<div class="emoji-container">
+  <div class="emoji-bubble-container">
+  <span class="emoji-bubble">❤️</span>
+  <span class="emoji-bubble">😊</span>
+  <span class="emoji-bubble">🤣</span>
+  <span class="emoji-bubble">🤓</span>
+  <span class="emoji-bubble">😘</span>
+  <span class="emoji-bubble">🥲</span>
+  <span class="emoji-bubble">😡</span>
+  <span class="emoji-bubble">😆</span>
+  <span class="emoji-bubble">😍</span>
+  <span class="emoji-bubble">😎</span>
+  <span class="emoji-bubble">😏</span>
+  <span class="emoji-bubble">😡</span>
+  <span class="emoji-bubble">😆</span>
+  <span class="emoji-bubble">😍</span>
+  <span class="emoji-bubble">😎</span>
+  <span class="emoji-bubble">😏</span>
+  <span class="emoji-bubble">😏</span>
+  <span class="emoji-bubble">😡</span>
+  <span class="emoji-bubble">😆</span>
+  <span class="emoji-bubble">😍</span>
+  <span class="emoji-bubble">😎</span>
+  <span class="emoji-bubble">😏</span>
+
+</div>
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="card glassmorphism-card p-5 shadow-lg">
+    <h2 class="text-white mb-4 text-center">Login to MoodShelf</h2>
+   <form method="POST" action="{% url 'login' %}">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label class="form-label text-white">Username</label>
+    <input type="text" class="form-control" name="username" placeholder="Enter username" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label text-white">Password</label>
+    <input type="password" class="form-control" name="password" placeholder="Enter password" required>
+  </div>
+  <div class="d-grid">
+    <button type="submit" class="btn btn-login w-100">Login</button>
+  </div>
+  {% if error %}
+    <p class="text-danger text-center mt-2">{{ error }}</p>
+  {% endif %}
+</form>
+
+    <p class="text-white mt-3 text-center">
+      Don’t have an account? <a href="{% url 'register' %}" class="text-warning">Register</a>
+    </p>
+  </div>
+</div>
+{% endblock %}
