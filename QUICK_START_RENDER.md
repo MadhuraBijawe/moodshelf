@@ -31,12 +31,13 @@ gunicorn moodshelf.wsgi:application
 ```
 SECRET_KEY = <generate new one from https://djecrety.ir/>
 DEBUG = False
-ALLOWED_HOSTS = <your-app-name>.onrender.com
 DATABASE_URL = <paste Internal Database URL from step 1>
 EMAIL_HOST_USER = madhurabijawe@gmail.com
 EMAIL_HOST_PASSWORD = qtbn kuxg vyum suvf
 PYTHON_VERSION = 3.11.0
 ```
+
+**Note:** `ALLOWED_HOSTS` is automatically configured using Render's `RENDER_EXTERNAL_HOSTNAME` variable, so you don't need to set it manually!
 
 ## ⚡ Quick Checklist:
 - [ ] Push code to GitHub
